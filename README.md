@@ -1,2 +1,4 @@
-# finance
-A finance helper designed for myself
+finance-tmp
+===========
+
+A Symfony project created on December 19, 2016, 11:57 am.
