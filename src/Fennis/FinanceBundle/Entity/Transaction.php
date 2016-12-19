@@ -108,9 +108,9 @@ class Transaction implements TransactionInterface
     }
 
     /**
-     * @return string
+     * @return UuidInterface
      */
-    public function getId(): string
+    public function getId(): UuidInterface
     {
         return $this->id;
     }

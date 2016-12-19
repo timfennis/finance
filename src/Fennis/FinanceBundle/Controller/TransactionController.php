@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Fennis\FinanceBundle\Controller;
 
 use Doctrine\Common\Collections\Criteria;
-use Doctrine\Common\Collections\Selectable;
 use Fennis\FinanceBundle\Domain\Transaction;
+use Fennis\FinanceBundle\Entity\Transaction as DoctrineTransaction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -16,7 +17,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class TransactionController extends Controller
 {
     /**
-     * @Route(path="/")
+     * @Route(path="/", name="fennis_finance_home")
+     * @Route(path="/transactions/")
      */
     public function indexAction()
     {
@@ -28,7 +30,21 @@ class TransactionController extends Controller
         $transactions = $this->get('fennis_finance.repository.transaction_repository')->matching($criteria);
 
         return $this->render('transaction/index.html.twig', [
-            'transactions' => $transactions
+            'transactions' => $transactions,
+        ]);
+    }
+
+    /**
+     * @Route(path="/transactions/{transaction}")
+     *
+     * @param DoctrineTransaction $transaction
+     *
+     * @return Response
+     */
+    public function showAction(DoctrineTransaction $transaction)
+    {
+        return $this->render('transaction/show.html.twig', [
+            'transaction' => $transaction,
         ]);
     }
 }

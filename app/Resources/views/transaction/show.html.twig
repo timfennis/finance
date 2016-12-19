@@ -1,0 +1,75 @@
+{% extends '::base.html.twig' %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('fennis_finance_transaction_index') }}">Transactions</a></li>
+        <li class="breadcrumb-item active">{{ transaction.id }}</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="display-4">Transaction</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th scope="row">Name</th>
+                    <td>{{ transaction.name }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Description</th>
+                    <td>{{ transaction.description }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Transaction Date</th>
+                    <td>{{ transaction.transactionDate | localizeddate('long', 'none') }}</td>
+                </tr>
+                <tr class="{{ transaction.amount.negative ? 'table-danger' : 'table-success' }}">
+                    <th scope="row">Description</th>
+                    <td>{{ transaction.amount | money }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Mutation Type</th>
+                    <td>{{ transaction.mutationType }}
+                        <small>({{ transaction.code }})</small>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Affected Account</th>
+                    <td>
+                        {% for number in transaction.affectedAccount.number %}
+                            {{ number }}
+                        {% else %}
+                            -
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Other Account</th>
+                    <td>
+                        {% for number in transaction.otherAccount.number %}
+                            {{ number }}
+                        {% else %}
+                            -
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">ID</th>
+                    <td>{{ transaction.id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Hash</th>
+                    <td>{{ transaction.hash }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

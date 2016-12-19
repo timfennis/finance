@@ -17,8 +17,12 @@
                 <tbody>
                 {% for transaction in transactions %}
                     <tr>
-                        <td>{{ transaction.name }}</td>
-                        <td>{{ transaction.description | truncate(50)}}</td>
+                        <td>
+                            <a href="{{ path('fennis_finance_transaction_show', {'transaction': transaction.id }) }}">
+                                {{ transaction.name }}
+                            </a>
+                        </td>
+                        <td>{{ transaction.description | truncate(50) }}</td>
                         <td>{{ transaction.transactionDate | localizeddate('medium', 'none') }}</td>
                         <td>{{ transaction.amount | money }}</td>
                     </tr>
