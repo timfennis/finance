@@ -1,0 +1,2 @@
+fennis_finance_bundle:
+    resource: '@FennisFinanceBundle/Resources/config/routing.yml'

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Fennis\FinanceBundle\Repository;
 
+use Doctrine\Common\Collections\Selectable;
 use Fennis\FinanceBundle\Domain\Transaction;
 use PhpOption\Option;
 use Ramsey\Uuid\UuidInterface;
@@ -13,7 +14,7 @@ use Ramsey\Uuid\UuidInterface;
  *
  * @author Tim Fennis <tim@isset.nl>
  */
-interface TransactionRepository
+interface TransactionRepository extends Selectable
 {
     public function save(Transaction $transaction);
 

@@ -4,6 +4,19 @@ parameters:
 #    parameter_name: value
 
 services:
+    twig_extension_intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+    twig_extension_text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }
+
+    fennis_twig_extension.money:
+        class: Fennis\Twig\Extension\MoneyExtension
+        tags:
+            - { name: twig.extension }
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
