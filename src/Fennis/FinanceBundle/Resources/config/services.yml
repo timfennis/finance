@@ -1,0 +1,7 @@
+imports:
+    - { resource: 'repositories.yml' }
+
+services:
+#    fennis_finance.example:
+#        class: Fennis\FinanceBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

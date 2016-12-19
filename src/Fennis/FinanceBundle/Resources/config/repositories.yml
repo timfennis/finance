@@ -1,0 +1,8 @@
+services:
+    fennis_finance.repository.transaction_repository:
+        class: Fennis\FinanceBundle\Repository\TransactionRepository
+        lazy: true
+        factory: [ '@doctrine.orm.entity_manager', 'getRepository' ]
+        autowiring_types: Fennis\FinanceBundle\Repository\TransactionRepository
+        arguments:
+            - Fennis\FinanceBundle\Entity\Transaction

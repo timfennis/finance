@@ -1,0 +1,6 @@
+services:
+    fennis_import.command.import_csv_command:
+        class: Fennis\ImportBundle\Command\ImportCsvCommand
+        autowire: true
+        tags:
+            - { name: console.command }
